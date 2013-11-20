@@ -133,8 +133,11 @@ controlpage.onAlert=function(msg){
 		case 'pageSetFn':
 			page[request[3]] = eval('(' + request[4] + ')')
 			break;
+		case 'pageSetPaperSize':
+			page.paperSize = JSON.parse(request[3]);
+			respond([id,cmdId,'pageSetPaperSizeDone']);
+			break;
 		case 'pageSetViewport':
-			page.paperSize = { width: '800px', height: '600px', border: '0px' };
 			page.viewportSize = {width:request[3], height:request[4]};
 			respond([id,cmdId,'pageSetViewportDone']);
 			break;
